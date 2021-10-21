@@ -58,14 +58,14 @@ unsafe fn call_variadic(args: &mut [u64]) -> u64 {
         "   mov rcx, QWORD PTR [r11+16]",
         "   mov r8, QWORD PTR [r11+24]",
         "   jmp 8f",
-        "6:", // 5+ args needing stack space
+        "6:", // 6+ args needing stack space
         // push last arg, decrement args index (r9)
         "   mov r8, QWORD PTR [r11 + r9]",
         "   push r8",
         "   sub r9, 8", 
         "   cmp r9, 32",
         "   jg 6b",
-        "7:",
+        "7:", // 5 args 
         // move first args to registers
         "   mov rdi, r10",
         "   mov rsi, QWORD PTR [r11]",
